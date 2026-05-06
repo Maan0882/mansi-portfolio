@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+/* ── CSS Custom Properties ── */
+:root {
+  --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-code: "Fira Code", "Consolas", "Monaco", monospace;
+  --font-serif: "Georgia", "Times New Roman", serif;
+
+  --bg: #f8f5f2;
+  --bg-alt: #fffffe;
+  --text: #232323;
+  --muted: #555555;
+  --accent: #078080;
+  --btn-text: #232323;
+
+  --illus-secondary: #f45d48;
+
+  --accent-soft: rgba(7, 128, 128, 0.1);
+  --border: rgba(35, 35, 35, 0.1);
+  --shadow-sm: 0 4px 6px rgba(0,0,0,0.02);
+  --shadow-md: 0 12px 24px rgba(35, 35, 35, 0.06);
+  --shadow-hover: 0 18px 32px rgba(35, 35, 35, 0.1);
+
+  --grad-1: rgba(7, 128, 128, 0.08);
+  --grad-2: rgba(244, 93, 72, 0.08);
+
+  --header-height: 70px;
+  --radius-lg: 16px;
+  --radius-pill: 50px;
+  --transition: 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+[data-theme="dark"] {
+  --bg: #16161a;
+  --bg-alt: #242629;
+  --text: #fffffe;
+  --muted: #94a1b2;
+  --accent: #7f5af0;
+  --btn-text: #fffffe;
+
+  --illus-secondary: #72757e;
+
+  --accent-soft: rgba(127, 90, 240, 0.15);
+  --border: rgba(148, 161, 178, 0.15);
+  --shadow-sm: 0 4px 6px rgba(0,0,0,0.2);
+  --shadow-md: 0 12px 24px rgba(0,0,0,0.3);
+  --shadow-hover: 0 18px 32px rgba(0,0,0,0.4);
+
+  --grad-1: rgba(127, 90, 240, 0.08);
+  --grad-2: rgba(44, 182, 125, 0.08);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-main);
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: color var(--transition), background-color var(--transition);
+}
+
+h1, h2, h3 { margin: 0; font-weight: 700; line-height: 1.2; }
+p { margin: 0 0 1rem; color: var(--muted); }
+a { text-decoration: none; color: inherit; transition: var(--transition); }
+
+.bg-doodle {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  background-color: var(--text);
+  opacity: 0.03;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cstyle%3E.s%7Bfill:none;stroke:black;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;%7D%3C/style%3E%3Cg class='s'%3E%3Cpath d='M20 30 Q40 10 60 30 T100 30'/%3E%3Ccircle cx='150' cy='30' r='10'/%3E%3Cpath d='M150 20 V10 M150 40 V50 M140 30 H130 M160 30 H170'/%3E%3Cpath d='M20 100 L20 70 L50 70 L50 100 Z M20 70 L35 55 L50 70'/%3E%3Crect x='130' y='70' width='30' height='20' rx='2'/%3E%3Cpath d='M135 75 H155 M135 80 H155 M135 85 H150'/%3E%3Cpath d='M50 150 L40 160 L50 170 M70 150 L80 160 L70 170'/%3E%3Cpath d='M130 150 A10 10 0 0 1 140 140 A15 15 0 0 1 160 150 A10 10 0 0 1 170 150'/%3E%3Ccircle cx='180' cy='180' r='5'/%3E%3Cpath d='M175 175 L165 165'/%3E%3Cpath d='M20 180 L80 160' stroke-dasharray='4 2'/%3E%3C/g%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cstyle%3E.s%7Bfill:none;stroke:black;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;%7D%3C/style%3E%3Cg class='s'%3E%3Cpath d='M20 30 Q40 10 60 30 T100 30'/%3E%3Ccircle cx='150' cy='30' r='10'/%3E%3Cpath d='M150 20 V10 M150 40 V50 M140 30 H130 M160 30 H170'/%3E%3Cpath d='M20 100 L20 70 L50 70 L50 100 Z M20 70 L35 55 L50 70'/%3E%3Crect x='130' y='70' width='30' height='20' rx='2'/%3E%3Cpath d='M135 75 H155 M135 80 H155 M135 85 H150'/%3E%3Cpath d='M50 150 L40 160 L50 170 M70 150 L80 160 L70 170'/%3E%3Cpath d='M130 150 A10 10 0 0 1 140 140 A15 15 0 0 1 160 150 A10 10 0 0 1 170 150'/%3E%3Ccircle cx='180' cy='180' r='5'/%3E%3Cpath d='M175 175 L165 165'/%3E%3Cpath d='M20 180 L80 160' stroke-dasharray='4 2'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+[data-theme="dark"] .bg-doodle { opacity: 0.05; }
+
+@keyframes float-visual {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes spin-slow {
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.animate-float { animation: float-visual 6s ease-in-out infinite; }
+.animate-spin-slow { animation: spin-slow 40s linear infinite; }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.font-code { font-family: var(--font-code); }
+.font-serif-custom { font-family: var(--font-serif); }

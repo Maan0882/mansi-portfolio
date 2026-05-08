@@ -35,11 +35,10 @@ export default function HeroVisual() {
         }}
       >
         <div
+          className="glass"
           style={{
-            background: "var(--bg-alt)",
-            border: "1px solid var(--border)",
-            borderRadius: 2,
-            boxShadow: "0 25px 50px rgba(0,0,0,0.1)",
+            borderRadius: 24,
+            boxShadow: "var(--shadow-md)",
             overflow: "hidden",
           }}
         >

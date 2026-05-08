@@ -7,14 +7,12 @@ import ContactForm from "./components/ContactForm";
 import { useScrollReveal } from "./components/useScrollReveal";
 
 const cardStyle: React.CSSProperties = {
-  background: "var(--bg-alt)",
   padding: "2rem",
-  borderRadius: "var(--radius-lg, 16px)",
-  border: "1px solid var(--border)",
+  borderRadius: "var(--radius-lg, 24px)",
   boxShadow: "var(--shadow-sm)",
   display: "flex",
   flexDirection: "column",
-  transition: "all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1)",
+  transition: "all var(--transition)",
 };
 
 const tagStyle: React.CSSProperties = {
@@ -60,13 +58,13 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 function Card({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
     <div
-      className={`reveal ${className}`}
+      className={`reveal glass ${className}`}
       style={cardStyle}
       onMouseEnter={(e) => {
         const el = e.currentTarget as HTMLElement;
-        el.style.transform = "translateY(-5px)";
+        el.style.transform = "translateY(-8px)";
         el.style.boxShadow = "var(--shadow-hover)";
-        el.style.borderColor = "var(--accent)";
+        el.style.borderColor = "var(--accent-soft)";
       }}
       onMouseLeave={(e) => {
         const el = e.currentTarget as HTMLElement;
@@ -92,13 +90,16 @@ export default function Home() {
     <>
       <div className="bg-doodle" />
       <div
+        className="animate-spin-slow"
         style={{
           position: "fixed",
-          inset: 0,
+          inset: "-50%",
           zIndex: -1,
           background:
-            "radial-gradient(circle at 10% 10%, var(--grad-1) 0, transparent 40%), radial-gradient(circle at 90% 90%, var(--grad-2) 0, transparent 40%)",
+            "radial-gradient(circle at 20% 30%, var(--grad-1) 0, transparent 40%), radial-gradient(circle at 80% 70%, var(--grad-2) 0, transparent 40%), radial-gradient(circle at 50% 50%, var(--grad-1) 0, transparent 60%)",
           pointerEvents: "none",
+          filter: "blur(60px)",
+          opacity: 0.8,
         }}
       />
 
@@ -134,11 +135,12 @@ export default function Home() {
             </span>
           </h1>
           <h2 style={{ fontSize: "1.5rem", fontWeight: 500, color: "var(--muted)", marginBottom: "1rem" }}>
-            Aspiring Software &amp; Web Developer
+            Aspiring Full Stack Developer
           </h2>
           <p style={{ color: "var(--muted)" }}>
-            Master of Science in Information Technology student with hands-on experience in web apps,
-            problem solving, and clean user experiences.
+            Completed Master's degree in{" "}
+            <span style={{ color: "#f7cc65", fontWeight: 600 }}>Masters of Science in Information Technology </span>
+             with hands-on experience in web apps, problem solving, and clean user experiences.
           </p>
           <div style={{ display: "flex", gap: "1rem", marginTop: "2rem", flexWrap: "wrap" }}>
             <a
@@ -216,7 +218,7 @@ export default function Home() {
           <Card>
             <h3 style={{ marginBottom: "1rem", color: "var(--text)" }}>Education</h3>
             <p style={{ color: "var(--muted)" }}>
-              Pursuing Master of Science in Information Technology at Shree P. M. Patel Institute, Anand.
+              Completed Master's degree in Information Technology at Shree P. M. Patel Institute, Anand in April 2026.
               Completed BCA in 2024 with a strong academic record.
             </p>
           </Card>
@@ -233,6 +235,32 @@ export default function Home() {
       {/* SKILLS */}
       <section id="skills" style={{ padding: "5rem 8vw" }}>
         <SectionTitle>Skills &amp; Toolbox</SectionTitle>
+        
+        <div style={{ marginBottom: "3rem" }}>
+          <Card>
+            <h3 style={{ marginBottom: "2rem", color: "var(--text)" }}>Proficiency Graph</h3>
+            <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+              {[
+                { name: "Frontend (HTML/CSS/JS)", level: 90 },
+                { name: "Backend (PHP/.NET/Java)", level: 85 },
+                { name: "Databases (MySQL/SQL Server)", level: 80 },
+                { name: "Python", level: 75 },
+                { name: "Tools & Git", level: 85 },
+              ].map((skill) => (
+                <div key={skill.name}>
+                  <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.5rem", fontSize: "0.9rem", color: "var(--text)", fontWeight: 500 }}>
+                    <span>{skill.name}</span>
+                    <span style={{ color: "var(--accent)" }}>{skill.level}%</span>
+                  </div>
+                  <div style={{ width: "100%", height: "8px", background: "var(--border)", borderRadius: "4px", overflow: "hidden" }}>
+                    <div style={{ width: `${skill.level}%`, height: "100%", background: "var(--accent)", borderRadius: "4px", transition: "width 1s ease-in-out" }} />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Card>
+        </div>
+
         <div style={{ display: "grid", gap: "2rem", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))" }}>
           {[
             { title: "Programming", tags: ["Java", "Python", "C", "PHP", ".NET"] },
@@ -249,12 +277,69 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PROJECTS */}
+      {/* EXPERIENCE & PROJECTS */}
       <section id="projects" style={{ padding: "5rem 8vw" }}>
-        <SectionTitle>Featured Projects</SectionTitle>
-        <div style={{ display: "grid", gap: "2rem", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))" }}>
+        <SectionTitle>Experience &amp; Projects</SectionTitle>
+        <div className="projects-grid">
+          
+          {/* Experience Card */}
           <Card>
-            <h3 style={{ marginBottom: "1rem", color: "var(--text)" }}>Quiz Up</h3>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1rem" }}>
+               <h3 style={{ color: "var(--text)", margin: 0 }}>SSM Future Innovation FZE</h3>
+               <span style={{ fontSize: "0.75rem", color: "var(--accent)", padding: "0.2rem 0.6rem", border: "1px solid var(--accent)", borderRadius: "50px", fontWeight: 600 }}>Experience</span>
+            </div>
+            <p style={{ color: "var(--muted)" }}>
+              Worked on the <strong>SSM Future Innovation FZE</strong>, a modern Next.js web application built with TypeScript. Handled implementation logic ensuring robust and scalable performance.
+            </p>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", marginTop: "auto", paddingTop: "1rem" }}>
+              {["Next.js", "TypeScript", "TailwindCSS"].map((t) => <span key={t} style={tagStyle}>{t}</span>)}
+            </div>
+            <a href="https://ssmfutureinnovationfze.com/" target="_blank" rel="noopener noreferrer" style={{
+                marginTop: "1.5rem",
+                color: "var(--accent)",
+                fontWeight: 600,
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.3rem",
+                transition: "gap 0.3s ease",
+                textDecoration: "none",
+              }}>
+              Live Demo <span>→</span>
+            </a>
+          </Card>
+
+          {/* IAPES System (TechStrota) */}
+          <Card>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1rem" }}>
+               <h3 style={{ color: "var(--text)", margin: 0 }}>IAPES System</h3>
+               <span style={{ fontSize: "0.75rem", color: "var(--muted)", padding: "0.2rem 0.6rem", border: "1px solid var(--border)", borderRadius: "50px", fontWeight: 600 }}>Project</span>
+            </div>
+            <p style={{ color: "var(--muted)" }}>
+              A robust web application built using the Laravel framework. It leverages an expressive routing engine, secure architecture, and a powerful ORM for scalable database management.
+            </p>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", marginTop: "auto", paddingTop: "1rem" }}>
+              {["Laravel", "PHP", "Blade"].map((t) => <span key={t} style={tagStyle}>{t}</span>)}
+            </div>
+            <a href="https://techstrota.tech/" target="_blank" rel="noopener noreferrer" style={{
+                marginTop: "1.5rem",
+                color: "var(--accent)",
+                fontWeight: 600,
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.3rem",
+                transition: "gap 0.3s ease",
+                textDecoration: "none",
+              }}>
+              Live Demo <span>→</span>
+            </a>
+          </Card>
+
+          {/* Project 1 */}
+          <Card>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1rem" }}>
+               <h3 style={{ color: "var(--text)", margin: 0 }}>Quiz Up</h3>
+               <span style={{ fontSize: "0.75rem", color: "var(--muted)", padding: "0.2rem 0.6rem", border: "1px solid var(--border)", borderRadius: "50px", fontWeight: 600 }}>Project</span>
+            </div>
             <p style={{ color: "var(--muted)" }}>
               Interactive quiz platform with user registration, quiz creation, scoring, and result tracking
               using ASP.NET (C#) and SQL Server.
@@ -264,8 +349,12 @@ export default function Home() {
             </div>
           </Card>
 
+          {/* Project 2 */}
           <Card>
-            <h3 style={{ marginBottom: "1rem", color: "var(--text)" }}>Real-time Chat App</h3>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1rem" }}>
+               <h3 style={{ color: "var(--text)", margin: 0 }}>Real-time Chat App</h3>
+               <span style={{ fontSize: "0.75rem", color: "var(--muted)", padding: "0.2rem 0.6rem", border: "1px solid var(--border)", borderRadius: "50px", fontWeight: 600 }}>Project</span>
+            </div>
             <p style={{ color: "var(--muted)" }}>
               Web-based chatting platform with authentication, messaging, and logout features.
               Built for seamless communication.
@@ -292,8 +381,12 @@ export default function Home() {
             </a>
           </Card>
 
+          {/* Project 3 */}
           <Card>
-            <h3 style={{ marginBottom: "1rem", color: "var(--text)" }}>Attendance System</h3>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1rem" }}>
+               <h3 style={{ color: "var(--text)", margin: 0 }}>Attendance System</h3>
+               <span style={{ fontSize: "0.75rem", color: "var(--muted)", padding: "0.2rem 0.6rem", border: "1px solid var(--border)", borderRadius: "50px", fontWeight: 600 }}>Project</span>
+            </div>
             <p style={{ color: "var(--muted)" }}>
               Comprehensive attendance management system featuring role-based dashboards
               (Admin, Teacher, Student), real-time reporting, and secure authentication.
@@ -325,15 +418,13 @@ export default function Home() {
       <section id="contact" style={{ padding: "5rem 8vw" }}>
         <SectionTitle>Get In Touch</SectionTitle>
         <div
-          className="reveal contact-grid"
+          className="reveal glass contact-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "1fr 1.5fr",
             gap: "3rem",
-            background: "var(--bg-alt)",
-            borderRadius: "var(--radius-lg, 16px)",
+            borderRadius: "var(--radius-lg, 24px)",
             padding: "3rem",
-            border: "1px solid var(--border)",
             boxShadow: "var(--shadow-md)",
           }}
         >
@@ -372,11 +463,23 @@ export default function Home() {
           Crafted with <span style={{ color: "var(--accent)" }}>code ✧ tea ✧ curiosity</span>
         </p>
         <p style={{ fontSize: "0.9rem", opacity: 0.8, color: "var(--muted)" }}>
-          © <span id="year" /> Mansi Gajjar — &quot;Intern today, impact tomorrow.&quot;
+          © <span id="year"/>_Mansi Gajjar — &quot;Debug the present | Design the future&quot;
         </p>
       </footer>
 
       <style jsx global>{`
+        .projects-grid {
+          display: grid;
+          gap: 2rem;
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        }
+        
+        @media (max-width: 1024px) {
+          .projects-grid {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          }
+        }
+
         @media (max-width: 768px) {
           main#home {
             grid-template-columns: 1fr !important;
@@ -389,6 +492,12 @@ export default function Home() {
           .contact-grid {
             grid-template-columns: 1fr !important;
             padding: 1.5rem !important;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .projects-grid {
+            grid-template-columns: 1fr;
           }
         }
       `}</style>

@@ -110,7 +110,7 @@ export default function Home() {
         id="home"
         style={{
           minHeight: "100vh",
-          padding: "6rem 8vw 2rem",
+          padding: "8rem var(--page-px) 2rem",
           display: "grid",
           gridTemplateColumns: "1.2fr 1fr",
           alignItems: "center",
@@ -121,7 +121,7 @@ export default function Home() {
           <p style={{ fontSize: "1.2rem", color: "var(--muted)", marginBottom: "1.5rem", fontWeight: 500 }}>
             Turning ideas into interactive experiences.
           </p>
-          <h1 style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", marginBottom: "0.5rem", letterSpacing: "-0.02em" }}>
+          <h1 style={{ fontSize: "clamp(2.5rem, 6vw, 6rem)", marginBottom: "0.5rem", letterSpacing: "-0.02em" }}>
             Hi, I&apos;m{" "}
             <span
               style={{
@@ -205,7 +205,7 @@ export default function Home() {
       </main>
 
       {/* ABOUT */}
-      <section id="about" style={{ padding: "5rem 8vw" }}>
+      <section id="about" style={{ padding: "5rem var(--page-px)" }}>
         <SectionTitle>About Me</SectionTitle>
         <div style={{ display: "grid", gap: "2rem", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))" }}>
           <Card>
@@ -233,7 +233,7 @@ export default function Home() {
       </section>
 
       {/* SKILLS */}
-      <section id="skills" style={{ padding: "5rem 8vw" }}>
+      <section id="skills" style={{ padding: "5rem var(--page-px)" }}>
         <SectionTitle>Skills &amp; Toolbox</SectionTitle>
         
         <div style={{ marginBottom: "3rem" }}>
@@ -278,7 +278,7 @@ export default function Home() {
       </section>
 
       {/* EXPERIENCE & PROJECTS */}
-      <section id="projects" style={{ padding: "5rem 8vw" }}>
+      <section id="projects" style={{ padding: "5rem var(--page-px)" }}>
         <SectionTitle>Experience &amp; Projects</SectionTitle>
         <div className="projects-grid">
           
@@ -415,7 +415,7 @@ export default function Home() {
       </section>
 
       {/* CONTACT */}
-      <section id="contact" style={{ padding: "5rem 8vw" }}>
+      <section id="contact" style={{ padding: "5rem var(--page-px)" }}>
         <SectionTitle>Get In Touch</SectionTitle>
         <div
           className="reveal glass contact-grid"
@@ -458,7 +458,7 @@ export default function Home() {
       </section>
 
       {/* FOOTER */}
-      <footer style={{ textAlign: "center", padding: "3rem 8vw", borderTop: "1px solid var(--border)", background: "var(--bg-alt)", marginTop: "4rem" }}>
+      <footer style={{ textAlign: "center", padding: "3rem var(--page-px)", borderTop: "1px solid var(--border)", background: "var(--bg-alt)", marginTop: "4rem" }}>
         <p style={{ color: "var(--muted)" }}>
           Crafted with <span style={{ color: "var(--accent)" }}>code ✧ tea ✧ curiosity</span>
         </p>

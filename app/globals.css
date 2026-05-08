@@ -28,6 +28,7 @@
   --radius-lg: 24px;
   --radius-pill: 99px;
   --transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --page-px: max(8vw, calc((100vw - 1400px) / 2));
 }
 
 [data-theme="light"] {
